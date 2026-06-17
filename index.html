@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#641f35">
+  <meta name="description" content="A private birthday journey, made with love.">
+  <title>For My Babydoll</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="pre-start">
+  <div class="start-overlay" id="startOverlay" role="dialog" aria-modal="true" aria-labelledby="startTitle">
+    <div class="start-card">
+      <p class="eyebrow">A private birthday journey</p>
+      <h2 id="startTitle">Tap To Begin</h2>
+      <p>Let the music start, and open this little world made for you.</p>
+      <button class="primary-btn" id="startExperience" type="button">Tap To Begin</button>
+    </div>
+  </div>
+  <audio id="mainWebsiteMusic" src="assets/audio/main-website-music.mp3" preload="auto" loop></audio>
+  <audio id="letterMusic" src="assets/audio/letter-music.mp3" preload="auto" loop></audio>
+  <audio id="introVoiceNote" src="assets/audio/intro-voice-note.mp3" preload="auto"></audio>
+  <audio id="finalThankYouVoiceNote" src="assets/audio/final-thank-you-voice-note.mp3" preload="auto"></audio>
+  <div class="ambient" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="screen-transition-layer" id="screenTransitionLayer" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="journey-bar" id="journeyBar">
+    <button class="monogram" data-go="0" aria-label="Return to the beginning">R<span>♡</span>N</button>
+    <div class="progress-track" aria-label="Journey progress">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <span class="step-count" id="stepCount">01 / 12</span>
+  </header>
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="Mute background music" aria-pressed="false">
+    <span class="music-on">♪</span>
+    <span class="music-off">×</span>
+  </button>
+
+  <main id="experience">
+    <section class="screen opening active" data-screen="0" aria-labelledby="openingTitle">
+      <div class="opening-atmosphere" aria-hidden="true">
+        <div class="letter-texture">
+          <span>my love, every moment with you feels like a letter I never want to end</span>
+          <span>in every quiet wish, in every beautiful tomorrow, I choose you</span>
+          <span>for all the memories behind us and every dream still waiting ahead</span>
+        </div>
+        <div class="frame-ambient-glow"></div>
+        <i class="opening-dust dust-1"></i>
+        <i class="opening-dust dust-2"></i>
+        <i class="opening-dust dust-3"></i>
+        <i class="opening-dust dust-4"></i>
+        <i class="opening-dust dust-5"></i>
+        <i class="opening-dust dust-6"></i>
+        <i class="opening-sparkle sparkle-1">✦</i>
+        <i class="opening-sparkle sparkle-2">✧</i>
+        <i class="opening-sparkle sparkle-3">✦</i>
+        <i class="opening-sparkle sparkle-4">✧</i>
+        <i class="opening-sparkle sparkle-5">✦</i>
+      </div>
+      <div class="opening-carousel memory-stack reveal" aria-label="Birthday portrait memories">
+        <div class="hero-slides">
+          <img class="hero-slide active" src="assets/hero/hero-1.jpg" alt="Birthday portrait 1">
+          <img class="hero-slide" src="assets/hero/hero-2.jpg" alt="Birthday portrait 2">
+          <img class="hero-slide" src="assets/hero/hero-3.jpg" alt="Birthday portrait 3">
+        </div>
+        <span class="memory-stack-line" aria-hidden="true"></span>
+      </div>
+      <div class="opening-content">
+        <p class="eyebrow reveal">A private birthday journey</p>
+        <h1 id="openingTitle" class="reveal">For the Woman<br>Who <em>Changed<br>Everything.</em></h1>
+        <p class="hero-copy reveal">Twelve little chapters.<br>A lifetime of meaning.</p>
+        <button class="primary-btn reveal" data-next>Open It <span>❤️</span></button>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span>Made only for you</div>
+    </section>
+
+    <section class="screen intro-screen" data-screen="1" aria-labelledby="introTitle">
+      <div class="chapter-atmosphere voice-atmosphere" aria-hidden="true">
+        <i class="chapter-glow glow-one"></i>
+        <i class="chapter-glow glow-two"></i>
+        <i class="light-beam beam-one"></i>
+        <i class="light-beam beam-two"></i>
+        <span class="chapter-particle particle-one"></span>
+        <span class="chapter-particle particle-two"></span>
+        <span class="chapter-particle particle-three"></span>
+        <span class="chapter-particle particle-four"></span>
+        <span class="chapter-particle particle-five"></span>
+        <span class="chapter-sparkle sparkle-a">✦</span>
+        <span class="chapter-sparkle sparkle-b">✧</span>
+        <span class="chapter-sparkle sparkle-c">✦</span>
+        <div class="handwritten-texture">
+          <span>saved for you, before the story begins</span>
+          <span>one quiet message, one little pause, one heart</span>
+          <span>some words are meant to be opened slowly</span>
+        </div>
+        <i class="floating-heart heart-one">♡</i>
+        <i class="floating-heart heart-two">♡</i>
+        <i class="decor-ring ring-one"></i>
+        <i class="decor-ring ring-two"></i>
+      </div>
+      <div class="section-shell narrow centered">
+        <div class="voice-stage">
+          <p class="eyebrow">Before everything else</p>
+          <h2 id="introTitle">Close your eyes for a moment.</h2>
+          <p class="lead">There is a voice note waiting here. For now, let this quiet moment hold its place.</p>
+        </div>
+        <div class="voice-card premium-voice intro-voice-note-card" data-voice-card data-intro-voice-card>
+          <span class="card-corner corner-tl"></span>
+          <span class="card-corner corner-tr"></span>
+          <span class="card-corner corner-bl"></span>
+          <span class="card-corner corner-br"></span>
+          <div class="sealed-mark" aria-hidden="true">R</div>
+          <div class="voice-orbit"><span class="voice-heart">♡</span></div>
+          <div class="voice-content">
+            <span class="micro-label">Intro voice note</span>
+            <h3>A message from my heart</h3>
+            <div class="voice-controls">
+              <button class="voice-toggle" data-voice-toggle data-intro-voice-toggle aria-label="Pause intro voice note" aria-pressed="false"><span class="play-icon">▶</span><span class="pause-icon">Ⅱ</span></button>
+              <div class="voice-track">
+                <div class="waveform" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <div class="voice-progress"><span></span></div>
+              </div>
+              <time data-intro-voice-time>0:00</time>
+            </div>
+            <p class="voice-transcript" data-intro-transcript aria-live="polite"></p>
+          </div>
+        </div>
+        <button class="primary-btn" data-next>Continue <span>♡</span></button>
+      </div>
+    </section>
+
+    <section class="screen quiz-screen" data-screen="2" aria-labelledby="quizTitle">
+      <div class="chapter-atmosphere quiz-atmosphere" aria-hidden="true">
+        <i class="chapter-glow glow-one"></i>
+        <i class="chapter-glow glow-two"></i>
+        <span class="chapter-particle particle-one"></span>
+        <span class="chapter-particle particle-two"></span>
+        <span class="chapter-particle particle-three"></span>
+        <span class="chapter-particle particle-four"></span>
+        <span class="chapter-sparkle sparkle-a">✦</span>
+        <span class="chapter-sparkle sparkle-b">✧</span>
+        <span class="chapter-sparkle sparkle-c">✦</span>
+        <i class="light-beam beam-one"></i>
+        <i class="light-beam beam-two"></i>
+        <i class="quiz-star star-one">✦</i>
+        <i class="quiz-star star-two">✧</i>
+        <i class="quiz-star star-three">✦</i>
+      </div>
+      <div class="section-shell narrow">
+        <div class="quiz-stage">
+          <div class="section-heading centered">
+            <p class="eyebrow">Only you would know</p>
+            <h2 id="quizTitle">Unlock our story</h2>
+            <p>Three memories. Three answers. One very obvious favorite person.</p>
+          </div>
+          <div class="quiz-card" id="quizCard">
+            <span class="card-corner corner-tl"></span>
+            <span class="card-corner corner-tr"></span>
+            <span class="card-corner corner-bl"></span>
+            <span class="card-corner corner-br"></span>
+            <div class="quiz-meta">
+              <span id="quizCounter">Question 1 of 3</span>
+              <div class="quiz-dots"><i class="active"></i><i></i><i></i></div>
+            </div>
+            <h3 id="quizQuestion"></h3>
+            <div class="quiz-options" id="quizOptions"></div>
+            <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="quiz-success" id="quizSuccess" hidden>
+          <span class="card-corner corner-tl"></span>
+          <span class="card-corner corner-tr"></span>
+          <span class="card-corner corner-bl"></span>
+          <span class="card-corner corner-br"></span>
+          <span class="success-mark">♡</span>
+          <p class="eyebrow">Unlocked</p>
+          <h2>Of course you know everything about us.</h2>
+          <button class="primary-btn" data-next>Continue The Journey <span>♡</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen welcome-screen" data-screen="3" aria-labelledby="welcomeTitle">
+      <p class="welcome-easter-hint">Some stars shine brighter than others... ✨</p>
+      <div class="split-layout section-shell">
+        <div class="portrait-frame">
+          <img id="welcomeHeroPhoto" src="assets/hero/hero-3.jpg" alt="A beautiful birthday portrait" title="Some memories need a second look">
+        </div>
+        <div class="split-copy">
+          <p class="eyebrow">Happy birthday, my love</p>
+          <h2 id="welcomeTitle">Today isn't just your birthday.</h2>
+          <p class="lead">It's the celebration of the most beautiful person in my life.</p>
+          <div class="gold-rule"></div>
+          <p>You make ordinary days feel meaningful, difficult days feel lighter, and every future worth imagining. This is a little world made from our memories, my words, and all the love I never want you to forget.</p>
+          <button class="primary-btn" data-next>Begin Our Story <span>♡</span></button>
+        </div>
+      </div>
+      <div class="welcome-easter-eggs" aria-label="Hidden welcome page surprises">
+        <button class="welcome-egg welcome-star egg-one" data-welcome-egg="1" aria-label="Hidden star one">✦</button>
+        <button class="welcome-egg welcome-star egg-two" data-welcome-egg="2" aria-label="Hidden star two">✧</button>
+        <button class="welcome-egg welcome-star egg-three" data-welcome-egg="3" aria-label="Hidden star three">✦</button>
+        <button class="welcome-egg welcome-heart egg-four" data-welcome-egg="4" aria-label="Hidden heart one">♥</button>
+        <button class="welcome-egg welcome-heart egg-five" data-welcome-egg="5" aria-label="Hidden heart two">♡</button>
+        <button class="welcome-egg welcome-heart egg-six" id="hiddenMessageFourEgg" data-welcome-egg="6" data-reward="hidden-message-4" aria-label="Hidden heart three">♥</button>
+        <button class="welcome-egg welcome-heart egg-seven" data-welcome-egg="7" aria-label="Hidden heart four">♡</button>
+        <button class="welcome-egg welcome-star egg-eight" data-welcome-egg="8" aria-label="Hidden star four">✧</button>
+        <button class="welcome-egg welcome-star egg-nine" data-welcome-egg="9" aria-label="Hidden star five">✦</button>
+        <button class="welcome-egg welcome-heart egg-ten" data-welcome-egg="10" aria-label="Hidden heart five">♥</button>
+        <button class="welcome-egg welcome-heart egg-eleven" data-welcome-egg="11" aria-label="Hidden heart six">♡</button>
+        <button class="welcome-egg welcome-star egg-twelve" data-welcome-egg="12" aria-label="Hidden photo star">✧</button>
+      </div>
+    </section>
+
+    <section class="screen content-screen" data-screen="4" aria-labelledby="questionsTitle">
+      <div class="section-shell">
+        <div class="section-heading">
+          <p class="eyebrow">Chapter one</p>
+          <h2 id="questionsTitle">Questions about us</h2>
+          <p>Tap a question to unfold the answer I wanted you to have.</p>
+        </div>
+        <div class="accordion" id="questionsAccordion"></div>
+        <div class="center-action"><button class="primary-btn" data-next>Keep Reading <span>♡</span></button></div>
+      </div>
+    </section>
+
+    <section class="screen reasons-screen" data-screen="5" aria-labelledby="reasonsTitle">
+      <div class="section-shell wide">
+        <div class="section-heading centered">
+          <p class="eyebrow">Chapter two</p>
+          <h2 id="reasonsTitle">Reasons Why I Love You</h2>
+          <p>And somehow, even fifty still isn't enough.</p>
+        </div>
+        <div class="reasons-grid" id="reasonsGrid"></div>
+        <div class="reasons-finale">
+          <p class="eyebrow">And the biggest reason why I love you?</p>
+          <h3>Because you're you.</h3>
+          <p>Out of billions of people in this world, somehow I got the one person who makes my days brighter, my smiles bigger, and my life happier.</p>
+          <p>I love you more than you'll ever know. ❤️</p>
+        </div>
+        <div class="center-action"><button class="primary-btn" data-next>Dream With Me <span>♡</span></button></div>
+      </div>
+    </section>
+
+    <section class="screen future-screen" data-screen="6" aria-labelledby="futureTitle">
+      <div class="section-shell">
+        <div class="section-heading centered">
+          <p class="eyebrow">Chapter three</p>
+          <h2 id="futureTitle">Future with you</h2>
+          <p>Not a perfect life. Just a beautiful one, together.</p>
+        </div>
+        <div class="future-grid" id="futureGrid"></div>
+        <blockquote class="future-finale">
+          <span>My biggest dream?</span>
+          No matter what the future looks like, I just hope you're in it. ❤️
+        </blockquote>
+        <div class="center-action"><button class="primary-btn" data-next>Let's Play <span>♡</span></button></div>
+      </div>
+    </section>
+
+    <section class="screen games-screen" data-screen="7" aria-labelledby="gamesTitle">
+      <div class="section-shell wide">
+        <div class="section-heading centered">
+          <p class="eyebrow">Chapter four</p>
+          <h2 id="gamesTitle">Made for your smile</h2>
+          <p>Three little games. Take your time. Have fun.</p>
+        </div>
+        <div class="game-tabs" role="tablist">
+          <button class="game-tab active" data-game="memoryGame">Memory Match <span id="memoryBadge"></span></button>
+          <button class="game-tab" data-game="wheelGame">Spin Wheel <span id="wheelBadge"></span></button>
+          <button class="game-tab" data-game="heartsGame">Catch My Hearts <span id="heartsBadge"></span></button>
+        </div>
+
+        <div class="game-panel active" id="memoryGame">
+          <div class="game-panel-heading">
+            <div><span class="micro-label">Game 01</span><h3>Memory Match</h3></div>
+            <button class="text-btn" id="restartMemory">Restart</button>
+          </div>
+          <p>Find all eight matching memories.</p>
+          <div class="memory-grid" id="memoryGrid"></div>
+        </div>
+
+        <div class="game-panel" id="wheelGame">
+          <div class="game-panel-heading">
+            <div><span class="micro-label">Game 02</span><h3>Spin Wheel</h3></div>
+          </div>
+          <p>Every landing is a small promise from me to you.</p>
+          <div class="wheel-stage">
+            <div class="wheel-wrap">
+              <div class="wheel-pointer"></div>
+              <div class="wheel" id="wheel"><div class="wheel-labels" id="wheelLabels"></div><div class="wheel-center">♡</div></div>
+            </div>
+            <button class="primary-btn" id="spinButton">Spin For A Surprise</button>
+          </div>
+        </div>
+
+        <div class="game-panel" id="heartsGame">
+          <div class="game-panel-heading">
+            <div><span class="micro-label">Game 03</span><h3>Catch My Hearts</h3></div>
+            <button class="text-btn" id="restartHearts">Restart</button>
+          </div>
+          <div class="heart-stats"><span>Lives <b id="heartLives">♡ ♡ ♡</b></span><span><b id="heartScore">0</b> / 21 hearts</span></div>
+          <div class="heart-arena" id="heartArena">
+            <div class="arena-intro" id="arenaIntro"><p>Move the catcher with your finger or mouse.</p><button class="primary-btn" id="startHearts">Start Game</button></div>
+            <div class="heart-catcher" id="heartCatcher">♡</div>
+          </div>
+        </div>
+        <div class="center-action"><button class="primary-btn" data-next>See Our Memories <span>♡</span></button></div>
+      </div>
+    </section>
+
+    <section class="screen gallery-screen" data-screen="8" aria-labelledby="galleryTitle">
+      <div class="section-shell wide">
+        <div class="section-heading">
+          <p class="eyebrow">Chapter five</p>
+          <h2 id="galleryTitle">A gallery of you</h2>
+          <p>Little fragments of time I would choose to keep forever.</p>
+        </div>
+        <div class="masonry" id="gallery"></div>
+        <div class="center-action"><button class="primary-btn" data-next>Open Your Surprises <span>♡</span></button></div>
+      </div>
+    </section>
+
+    <section class="screen surprises-screen" data-screen="9" aria-labelledby="surprisesTitle">
+      <div class="section-shell narrow centered">
+        <p class="eyebrow">Chapter six</p>
+        <h2 id="surprisesTitle">Two things I saved for you</h2>
+        <p class="lead">Some feelings deserve to arrive wrapped.</p>
+        <div class="gift-grid">
+          <button class="gift-box" data-gift="memory">
+            <span class="gift-lid"></span><span class="gift-body"></span><span class="gift-ribbon"></span>
+            <strong>Special Memory</strong><small>Tap to open</small>
+          </button>
+          <button class="gift-box" data-gift="special">
+            <span class="gift-lid"></span><span class="gift-body"></span><span class="gift-ribbon"></span>
+            <strong>Why You're Special</strong><small>Tap to open</small>
+          </button>
+        </div>
+        <button class="primary-btn" data-next>Open My Letter <span>♡</span></button>
+      </div>
+    </section>
+
+    <section class="screen letter-screen" data-screen="10" aria-labelledby="letterTitle">
+      <div class="section-shell letter-shell">
+        <div class="section-heading centered">
+          <p class="eyebrow">The final chapter</p>
+          <h2 id="letterTitle">A letter from my heart</h2>
+        </div>
+        <div class="envelope-scene" id="envelopeScene">
+          <button class="sealed-envelope" id="openLetter">
+            <span class="envelope-flap"></span><span class="wax-seal">R</span>
+            <strong>For My Dearest Mommy</strong><small>Tap to open</small>
+          </button>
+        </div>
+        <article class="letter-paper" id="letterPaper" hidden>
+          <div class="letter-header">
+            <p>To My Dearest Mommy, Mrs. Nandwani, My Princess ❤️</p>
+            <h3>Subject: Happy Birthday, My Love</h3>
+          </div>
+          <div class="letter-body" id="letterBody"></div>
+          <p class="signature">Forever yours,<br><strong>Rachit❤️</strong></p>
+          <button class="primary-btn" data-next>One Last Thing <span>♡</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="screen thankyou-screen" data-screen="11" aria-labelledby="thanksTitle">
+      <div class="thankyou-portrait"><img src="assets/hero/hero-1.jpg" alt="A favorite portrait"></div>
+      <div class="thankyou-copy">
+        <p class="eyebrow">Happy birthday, my love</p>
+        <h2 id="thanksTitle">And if I had to choose again,<br>in every lifetime,<br><em>I would still choose you ❤️</em></h2>
+        <p>Thank you for being my favorite person, my safest place, my greatest blessing, and the best part of my life.</p>
+        <div class="final-voice premium-voice compact-voice" data-voice-card data-final-voice-card>
+          <button class="voice-toggle" data-voice-toggle data-final-voice-toggle aria-label="Pause final voice note" aria-pressed="false"><span class="play-icon">▶</span><span class="pause-icon">Ⅱ</span></button>
+          <div class="voice-content">
+            <strong>Final voice note</strong><small>A little thank you, from my heart</small>
+            <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="voice-progress"><span></span></div>
+            <p class="voice-transcript final-voice-transcript" data-final-transcript aria-live="polite"></p>
+          </div>
+        </div>
+        <button class="primary-btn" id="restartJourney">Read Our Story Again ❤️</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close-modal aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" data-close-lightbox aria-label="Close">×</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+    <img id="lightboxImage" src="assets/gallery/gallery-01.jpg" alt="A memory in full view">
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next photo">›</button>
+    <span id="lightboxCount"></span>
+  </div>
+
+  <noscript>This birthday journey needs JavaScript enabled to open.</noscript>
+  <script src="script.js"></script>
+</body>
+</html>
